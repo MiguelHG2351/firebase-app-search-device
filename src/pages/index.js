@@ -1,13 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Header from '../components/header'
 
 export default function Index() {
     return <>
-    <section>
-        <div className="header-info">
-            <img src="https://firebase.google.com/images/brand-guidelines/logo-vertical.png?hl=es" />
-        </div>
-
+    <Header />
+    <section className="list-devices">
+    <Link to="/login">Ir a login</Link>
     </section>
-    <h2>Hola Mundo</h2>
 </>
 }

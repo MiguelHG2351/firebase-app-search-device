@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const path = require('path')
 
 module.exports = {
@@ -6,12 +7,13 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'build'),
+        publicPath: '/'
     },
     module: {
         rules: [
             {
                 test: /\.js$/i,
-                exclude: /node_modules/,
+                exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -24,19 +26,37 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(jpe?g|jpg|png|webp|webm|gif|mp4)/,
-                use: ['file-loader']
+                test: /\.(jpe?g|jpg|png|webp|webm|gif|mp4)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                    }
+                ]
             },
             {
-                test: /\.(jpg|png|gif|mp4)/,
-                use: ['file-loader']
+                test: /\.(jpg|png|gif|mp4)$/i,
+                use: [
+                    {
+                      loader: 'url-loader',
+                      options: {
+                        limit: 8192,
+                      },
+                    },
+                ],
             }
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: './index.html'
         })
     ],
+    devServer: {
+        historyApiFallback: true,
+    },
+    performance : {
+        hints : false
+    } 
 }
