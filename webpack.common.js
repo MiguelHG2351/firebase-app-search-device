@@ -26,24 +26,13 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(jpe?g|jpg|png|webp|webm|gif|mp4)$/i,
-                use: [
-                    {
-                        loader: "file-loader",
-                    }
-                ]
+                test: /\.(jpe?g|jpg|png|gif|mp4|webp|webm)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                },
             },
-            {
-                test: /\.(jpg|png|gif|mp4)$/i,
-                use: [
-                    {
-                      loader: 'url-loader',
-                      options: {
-                        limit: 8192,
-                      },
-                    },
-                ],
-            }
+            
         ]
     },
     plugins: [
@@ -58,5 +47,5 @@ module.exports = {
     },
     performance : {
         hints : false
-    } 
+    }
 }
