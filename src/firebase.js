@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth'
+import 'firebase/firestore'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -14,6 +15,7 @@ var firebaseConfig = {
     measurementId: "G-9CBHSZYL2Y"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  const fb = firebase.initializeApp(firebaseConfig);
+  const db = fb.firestore()
   firebase.analytics();
  
