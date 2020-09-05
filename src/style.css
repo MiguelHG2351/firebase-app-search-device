@@ -18,7 +18,7 @@ body {
 }
 
 .header-info {
-    height: 40vh;
+    height: auto;
     display: flex;
     justify-content: center;
 }
@@ -81,6 +81,17 @@ body {
     padding: 12px;
     border-radius: 12px;
     border: none;
+    cursor: pointer;
+}
+
+.form-control.github button {
+    background-color: #010101;
+    color: #fff;
+}
+
+.form-control.github button i {
+    font-size: 18px;
+    margin-right: 12px;
 }
 
 @media screen and (max-width: 768px) {
@@ -109,12 +120,6 @@ body {
 
     .form-control.github {
         grid-template-columns: 1 / span 2;
-    }
-
-
-    .form-control.github button {
-        background-color: #010101;
-        color: #fff;
     }
 
     .form-control.github button i {

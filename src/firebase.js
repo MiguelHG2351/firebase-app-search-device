@@ -15,9 +15,32 @@ var firebaseConfig = {
     measurementId: "G-9CBHSZYL2Y"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  !firebase.apps.length && firebase.initializeApp(firebaseConfig);
+  
 
   firebase.analytics();
+
+  const mapUserFromFirebaseAuth = (user) => {
+    if(user !== null) {
+      // const { additionalUserInfo } = user
+        const { photoURL, displayName, email } = user
+        // const { avatar_url, blog } = profile
+        return {
+          avatar: photoURL
+        } 
+    } else {
+      return null
+    }
+  }
+  
+  export const authStateChange = (onChange) => {
+    return firebase
+      .auth()
+      .onAuthStateChanged(user  => {
+        const normalizedUser = mapUserFromFirebaseAuth(user)
+        onChange(normalizedUser)
+      })
+  }
 
   export const loginWithGithub = () => {
     const githubProvider = new firebase.auth.GithubAuthProvider()
