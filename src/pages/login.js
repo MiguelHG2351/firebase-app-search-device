@@ -32,10 +32,10 @@ function Index () {
   }
 
   function loginGithub () {
-    loginWithGithub().then(userInfo => {
+    loginWithGithub().then(() => {
     //   const { avatar } = userInfo
       // setUser(userInfo)
-      console.log(userInfo)
+      console.log("Todo bien!")
     }).catch(err => console.log(err))
   }
 
