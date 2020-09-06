@@ -1,25 +1,28 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import logo from '../static/images/firebase.png'
-import context from '../context/context'
 import { loginWithGithub, authStateChange } from '../firebase'
 
-export default function Index () {
-  const [user, setUser] = useState(undefined)
-
-  const contextAPI = useContext(context)
-  console.log(contextAPI)
+function Index () {
+  // const [user, setUser] = useState(undefined)
+  const dispatch = useDispatch()
+  const UserState = useSelector(state => state.user)
 
   useEffect(() => {
-    authStateChange(user => setUser(user))
+    authStateChange(user => {
+      localStorage.setItem("SET_USER_DATA", JSON.stringify(user))
+      return dispatch({
+        type: 'SET_USER_DATA',
+        payload: user
+      })
+    })
   }, [])
 
   function getData (formData) {
     const email = formData.get('email')
     const password = formData.get('password')
     console.log(email, password)
-    // console.log(email)
-    // console.log(password)
-    // data(email, password)
   }
 
   function submitUsers (e) {
@@ -31,20 +34,21 @@ export default function Index () {
   function loginGithub () {
     loginWithGithub().then(userInfo => {
     //   const { avatar } = userInfo
-      setUser(userInfo)
-      console.log(user)
+      // setUser(userInfo)
+      console.log(userInfo)
     }).catch(err => console.log(err))
   }
 
   return <>
     <section className="login-container">
+      {
+        UserState === null &&
+      <>
       <div className="header-info">
         <picture>
           <img src={logo} alt="Firebase logo" />
         </picture>
       </div>
-      {
-        user === null &&
         <form className="login" onSubmit={submitUsers}>
           <div className="form-group">
             <div className="form-control">
@@ -64,10 +68,14 @@ export default function Index () {
             </div>
           </div>
         </form>
+        </>
       }
     </section>
     {
-      user && user.avatar && <img src={user.avatar} style={{ width: '100%' }} alt="imagen del usuario"/>
+      //  UserState && UserState.avatar && <img src={UserState.avatar} style={{ width: '100%' }} alt="imagen del usuario"/>
+      UserState && UserState.avatar && <Redirect to="/profile" />
     }
   </>
 }
+
+export default Index

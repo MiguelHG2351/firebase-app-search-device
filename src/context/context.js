@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../api.json'
 
-const ContextData = React.createContext({})
+export const ContextData = React.createContext({})
 
 const data = {
   api,

@@ -3,6 +3,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --width-image-user: 135px;
+}
+
+html {
+    font-family: "Roboto";
+}
+
 body {
     /* background-color: #039be5; */
     color: #fff;
@@ -112,6 +120,188 @@ body {
     margin-right: 12px;
 }
 
+/* Estilos del header, estilo vercel */
+
+.header-profile {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 22px;
+}
+
+.hero-links {
+    display: flex;
+    align-items: center;
+    gap: 0 22px;
+    width: 70%;
+}
+
+.bar::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    width: 40px;
+    height: 1px;
+    background: #333;
+    transform: rotate(120deg);
+}
+
+.photo_and_user {
+    position: relative;
+}
+
+.photo_and_user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.photo_and_user {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+.photo_and_user img {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+}
+
+.profile-description {
+    background-color: #000;
+}
+
+hr {
+    border: 0.1px solid #3f3535;
+}
+
+.info_user {
+    display: flex;
+    align-items: center;
+    gap: 0 22px;
+}
+
+.info_user span img {
+    width: var(--width-image-user);
+    height: var(--width-image-user);
+    border-radius: 50%;
+}
+
+.setting-type-account {
+    display: inline-block;
+    padding: 4px 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 30px;
+    border: 1px solid #333;
+}
+
+.integration p {
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.integration a {
+    color: #fff;
+}
+
+.integration a  i{
+    margin-right: 8px;
+}
+
+
+.action-user {
+    display: flex;
+    justify-content: flex-end;
+    width: 40%;
+}
+
+.action-user-team, .action-user-import {
+    display: block;
+    text-decoration: none;
+    transition: all ease 0.50s;
+    padding: 12px 22px;
+    margin-left: 22px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.action-user-team {
+    border: 1px solid #333;
+    background-color: transparent;
+    color: #555;
+}
+
+.action-user-team:hover {
+    border: 1px solid #fff;
+}
+
+.action-user-import {
+    background-color: #fff;
+    color: #000;
+}
+
+.action-user-import:hover {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+}
+
+.projects {
+    background-color: #111;
+    height: 100vh;
+}
+
+.container-cards {
+    width: 75%;
+    margin: auto;
+}
+
+.card {
+    position: relative;
+    top: -50px;
+    border: 1px solid #eee;
+    padding: 12px;
+    width: fit-content;
+}
+
+@media screen and (min-width: 1200px) {
+    .header-container {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header-container {
+        width: 75%;
+        margin: auto;
+    }
+
+    .profile-description {
+        padding: 90px 22px;
+    }
+
+    .containter-action {
+        width: 75%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .initial-info {
+        margin: 12px 0;
+    }
+
+    .description-user h3 {
+        font-size: 30px;
+    }
+
+}
+
+
 @media screen and (max-width: 768px) {
 
     .header-info {
@@ -119,6 +309,10 @@ body {
         background-image: url(static/images/background.png);
         background-size: cover;
         height: auto
+    }
+
+    .hero-links {
+        width: 100%;
     }
 
     .login-container {
@@ -156,6 +350,10 @@ body {
     .form-control.github button i {
         font-size: 18px;
         margin-right: 8px;
+    }
+
+    .photo_and_user {
+        font-size: 14px;
     }
 
 }
