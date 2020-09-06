@@ -5,6 +5,7 @@
 
 :root {
     --width-image-user: 135px;
+    --width-container: 1154.36px
 }
 
 html {
@@ -17,6 +18,8 @@ body {
     height: 100vh;
 }
 
+/* El fallback es el elemento que se muestra mientras carga el sitio */
+
 .fallback {
     width: 100%;
     height: 100vh;
@@ -25,12 +28,16 @@ body {
     justify-content: center;
 }
 
+/* section coompleta del login, si no esta logeado  */
+
 .login-container {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
     height: 100vh;
 }
+
+/* Header con el logo de firebase */
 
 .header-info {
     background-color: #0059d4;
@@ -75,7 +82,7 @@ body {
 
 .form-control input, .form-control button {
     margin: 0 auto;
-    width: 75%;
+    width: var(--width-container);
 }
 
 .form-control {
@@ -127,7 +134,16 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 22px;
+    width: 100%;
 }
+
+.header-container {
+    width: var(--width-container);
+    margin: auto;
+}
+
+
+/* Enlaces de vercel y la cuenta */
 
 .hero-links {
     display: flex;
@@ -169,13 +185,17 @@ body {
     border-radius: 50%;
 }
 
+hr {
+    border: 0.1px solid #3f3535;
+}
+
+/* section description-profile */
+
 .profile-description {
     background-color: #000;
 }
 
-hr {
-    border: 0.1px solid #3f3535;
-}
+/* Información del usuario, imagenees */
 
 .info_user {
     display: flex;
@@ -205,6 +225,11 @@ hr {
 
 .integration a {
     color: #fff;
+    text-decoration: none;
+}
+
+.integration a:hover {
+    text-decoration: underline;
 }
 
 .integration a  i{
@@ -214,8 +239,12 @@ hr {
 
 .action-user {
     display: flex;
-    justify-content: flex-end;
-    width: 40%;
+}
+
+.containter-action {
+    width: var(--width-container);
+    margin: auto;
+
 }
 
 .action-user-team, .action-user-import {
@@ -225,6 +254,7 @@ hr {
     padding: 12px 22px;
     margin-left: 22px;
     border-radius: 8px;
+    height: min-content;
     height: fit-content;
 }
 
@@ -251,45 +281,140 @@ hr {
 
 .projects {
     background-color: #111;
-    height: 100vh;
 }
 
 .container-cards {
-    width: 74%;
-    width: 75%;
+    width: var(--width-container);
+    display: grid;
     margin: auto;
 }
 
 .card {
     position: relative;
-    top: -50px;
-    border: 1px solid #eee;
+    border: 1px solid #333;
+    border-radius: 8px;
     padding: 12px;
-    width: fit-content;
+    background-color: #000;
 }
+
+.name-project {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.visit-project {
+    border-radius: 8px;
+    border: 1px solid #333;
+    color: #333333;
+    cursor: pointer;
+    height: min-content;
+
+}
+
+.visit-project:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.visit-project a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+}
+
+.state-repositorie {
+    border: 1px solid #333;
+    border-radius: 22px;
+    margin-left: 8px;
+}
+
+.bar-repositorie {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    left: 0;
+    background-color: #333;
+}
+
+.info-repo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 250px) {
+
+    :root {
+        --width-container: 90%;
+    }
+
+    .containter-action {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px 0;
+        padding: 0 0 43px 0;
+    }
+
+    .info_user {
+        justify-content: flex-start;
+        padding: 24px 0;
+    }
+
+
+    .action-user {
+        width: 100%;
+        justify-content: center;
+    }
+
+    
+    .state-deployment {
+        padding: 6px;
+        background-color: #50e3c2;
+        border-radius: 22px;
+        height: max-content;
+        height: fit-content;
+        margin-right: 5px;
+    }
+
+    .visit-project {
+        padding: 4px 18px;
+    }
+
+    
+    .enviroment {
+        display: flex;
+        align-items: center;
+        margin: 12px 0;
+        color: #fff;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .repositorie {
+        display: flex;
+        align-items: center;
+        padding: 18px 0;
+    }
+
+    .enviroment:first-child {
+        font-size: 14px;
+    }
+
+}
+
 
 @media screen and (min-width: 1200px) {
-    .header-container {
-        width: 90%;
-        margin: auto;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-    .header-container {
-        width: 75%;
-        margin: auto;
-    }
 
     .profile-description {
         padding: 90px 22px;
     }
 
-    .containter-action {
-        width: 75%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
+    .action-user {
+        width: 40%;
     }
 
     .initial-info {
@@ -300,8 +425,38 @@ hr {
         font-size: 30px;
     }
 
-}
 
+    .containter-action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .container-cards {
+        grid-template-columns: 50%;
+        gap: 22px 0;
+    }
+
+    .card {
+        padding: 25px;
+        top: -50px;
+        padding-bottom: 0;
+    }
+
+    .visit-project {
+        padding: 4px 22px;
+    }
+    
+    .enviroment:first-child {
+        font-size: 15px;
+    }
+
+    .state-repositorie {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+}
 
 @media screen and (max-width: 768px) {
 
@@ -318,7 +473,6 @@ hr {
 
     .login-container {
         display: block;
-        /* grid-template-columns: 100%; */
         height: auto;
     }
 

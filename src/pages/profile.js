@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Header from '../components/header_vercel'
+import Card from '../components/card-repositories'
 
 function Profile() {
   const userState = useSelector(state => {
@@ -13,7 +14,7 @@ function Profile() {
       }
     })
 
-    const { username, avatar, url } = userState
+    const { username, avatar } = userState
 
     return <>
     <Header userState={userState} />
@@ -41,31 +42,17 @@ function Profile() {
                 </div>
             </div>
             <div className="action-user">
-                <Link className="action-user-team" to="/teams">Invite Team</Link>
-                <Link className="action-user-import" to="/proyect-import">Import Project</Link>
+                <Link to="/team" className="action-user-team" to="/teams">Invite Team</Link>
+                <Link to="/import" className="action-user-import" to="/proyect-import">Import Project</Link>
             </div>
         </div>
     </section>
     <section className="projects">
         <div className="container-cards">
-            <div className="card">
-                <div className="name-project">
-                    <h2>firebase-app-search-device</h2>
-                </div>
-                <div className="state-project">
-                    <div className="production">
-                        <p>firebase-app-search-device.vercel.app</p>
-                        <p className="state-repositorie">production</p>
-                    </div>
-                    <div className="latest">
-                        <p>firebase-app-search-device.vercel.app</p>
-                        <p className="state-repositorie">Latest</p>
-                    </div>
-                </div>
-                <div className="repositiorie">
-                    
-                </div>
-            </div>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         </div>
     </section>
 </>

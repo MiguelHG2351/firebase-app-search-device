@@ -45,5 +45,6 @@ export const authStateChange = (onChange) => {
 
 export const loginWithGithub = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider()
+  githubProvider.addScope('repo')
   return firebase.auth().signInWithPopup(githubProvider)
 }
